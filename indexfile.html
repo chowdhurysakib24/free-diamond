@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Watch ADS</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container, .ad-container {
+      text-align: center;
+      padding: 20px;
+      border-radius: 15px;
+      background-color: rgba(0, 0, 0, 0.4);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      width: 90%;
+      max-width: 400px;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #00c853;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background-color: #00b342;
+    }
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 10px;
+      margin-top: 15px;
+    }
+    #countdown {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container" id="mainScreen">
+  <h2>Welcome to Our Digital App</h2>
+  <button onclick="showAd()">Watch ADS</button>
+</div>
+
+<div class="ad-container hidden" id="adScreen">
+  <h3>Advertisement</h3>
+  <iframe id="adFrame" src=""></iframe>
+  <div id="countdown">Returning in <span id="timer">10</span> seconds...</div>
+</div>
+
+<script>
+  function showAd() {
+    document.getElementById("mainScreen").classList.add("hidden");
+    document.getElementById("adScreen").classList.remove("hidden");
+    document.getElementById("adFrame").src = "https://impartialreefham.com/aef79b45?key=44a0d6c3d9362ec3f4d77fbeea736d4b";
+
+    let seconds = 10;
+    const timer = document.getElementById("timer");
+
+    const interval = setInterval(() => {
+      seconds--;
+      timer.textContent = seconds;
+      if (seconds <= 0) {
+        clearInterval(interval);
+        document.getElementById("adScreen").classList.add("hidden");
+        document.getElementById("mainScreen").classList.remove("hidden");
+        document.getElementById("adFrame").src = "";
+        alert("Thanks for watching the ad!");
+      }
+    }, 1000);
+  }
+</script>
+
+</body>
+</html>
